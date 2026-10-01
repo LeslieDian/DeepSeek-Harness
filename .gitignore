@@ -1,0 +1,72 @@
+# ─────────────────────────────────────────────────────────────
+# DeepSeek-Harness 工作区 .gitignore
+# ─────────────────────────────────────────────────────────────
+
+# Node / pnpm
+node_modules/
+.pnpm-store/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 构建产物（dsh 桌面版 .exe 安装器）
+*.exe
+apps/desktop/.desktop-build/
+apps/desktop/dist/
+apps/desktop/out/
+
+# 源码克隆目录（README 文档说明如何克隆，不要进 git）
+harness-src/
+harness-src.zip
+*.zip
+
+# 环境变量与本地配置（含 API key 引用，绝对不能入 git）
+.env
+.env.*
+!.env.example
+apps/desktop/.env.windows
+apps/desktop/.env.macos
+apps/desktop/.env.linux
+
+# 用户 profile 的 patch 层（每个开发者自己定制）
+# 注：profiles/<name>/cordis.yml 也不提交，因为它由 dsh 初始化生成
+.dsh/
+*cordis.patch.yml
+*cordis.yml
+
+# IDE / 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 临时文件 / 缓存
+*.tmp
+*.bak
+.cache/
+.parcel-cache/
+.turbo/
+
+# Python（嵌入式运行时 + uv）
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Electron 缓存
+Electron/
+electron-cache/
+
+# 截图/演示素材（可选，按需保留）
+docs/screenshots/raw/
+
+# 私钥/凭据（双重保险）
+*.pem
+*.key
+*.pfx
+secrets.*
